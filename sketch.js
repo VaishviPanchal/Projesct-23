@@ -31,7 +31,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.2, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -73,21 +73,23 @@ function draw() {
  
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
+
+  packageBody.position.x=helicopterSprite.position.x
   
+  drawSprites();
+}
+  
+function keyPressed(){
+
   if(keyCode===LEFT_ARROW){
-	  helicopterSprite.x=helicopterSprite.x-20
+	helicopterSprite.x=helicopterSprite.x-40
   }
   if(keyCode===RIGHT_ARROW){
-	helicopterSprite.x=helicopterSprite.x+20
+	helicopterSprite.x=helicopterSprite.x+40
   }
   if(keyCode===DOWN_ARROW){
 	Matter.Body.setStatic(packageBody,false);
   }
-  
-
-  
-  drawSprites();
-  
-  
- 
 }
+ 
+
